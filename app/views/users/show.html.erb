@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @user.name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+<p>
+  <b>Your Favorites:</b>
+  <ul><% @user.votes.each do |fave| %>
+<li class="movie_list">
+<%= link_to "#{fave.movie.title}", movie_url(fave.movie.id) %></li>
+<% end %></ul>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

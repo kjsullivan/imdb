@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Imdb</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<nav>
+	<li><%= link_to "Movies", movies_url %></li>
+	<li><%= link_to "Directors", directors_url %></li>
+	<li><%= link_to "Actors", actors_url %></li>
+	<li><%= link_to "Roles", roles_url %></li>
+	<li><%= link_to "Users", users_url %></li>
+	<% if cookies["user_id"].present? %>
+	<li>Welcome, <a href="/users/<%= (cookies["user_id"]) %>"><%= User.find_by_id(cookies["user_id"]).name %></a>!</li>	
+	<% end %>
+</nav>
+
+
+
+<% if cookies["last_movie"].present? %>
+<p>You just viewed <%= cookies["last_movie"] %>. Click <a href="/votes/new">here</a> to vote for <%= cookies["last_movie"] %>!</p>
+<% end %>
+
+<%= yield %>
+
+</body>
+</html>

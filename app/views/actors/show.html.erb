@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b><%= @actor.name %></b>
+<br>
+<img src="<%= @actor.photo_url %>" height="200">
+</p>
+
+<p>
+  <b>DOB:</b>
+  <%= @actor.dob %>
+</p>
+
+<p>
+  <b>Hometown:</b>
+  <%= @actor.hometown %>
+</p>
+
+<p>
+  <b>Movies:</b>
+<ul><% @actor.movies.each do |title| %>
+  <li class="movie_list"><%= title.title %></li>
+<% end %></ul>
+</p>
+
+
+
+<%= link_to 'Edit', edit_actor_path(@actor) %> |
+<%= link_to 'Back', actors_path %>

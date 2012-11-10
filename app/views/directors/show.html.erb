@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b><%= @director.name %></b>
+<br>
+  <img src="<%= @director.photo_url %>" width="300">
+</p>
+
+<p>
+  <b>DOB:</b>
+  <%= @director.dob %>
+</p>
+<p>
+  <b>Movies:</b>
+<ul><% @directormovies.each do |line| %>
+  <li class="movie_list"><%= line.year %> |  <%= line.title %></li>
+<% end %></ul>
+</p>
+
+<%= link_to 'Edit', edit_director_path(@director) %> |
+<%= link_to 'Back', directors_path %>
