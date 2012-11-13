@@ -1,8 +1,10 @@
 Imdb::Application.routes.draw do
   
-  get '/login' => "sessions#new"
-
+  get '/login' => "sessions#new", :as => 'login'
   post 'sessions/create' => 'sessions#create'
+  get '/logout' =>'sessions#destroy', :as => 'logout'
+  
+
   
   resources :votes
 

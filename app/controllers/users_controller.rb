@@ -3,18 +3,21 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
-
+    if session["user_id"] = nil 
+    flash[:notice] = "You do not have access to this page"
+    redirect_to root_url 
+    else 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @users }
     end
+  end
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user }
@@ -44,7 +47,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        session["user_id"] = @user.id
+        format.html { redirect_to root_url, notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "new" }

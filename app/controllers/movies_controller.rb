@@ -14,7 +14,7 @@ class MoviesController < ApplicationController
   # GET /movies/1.json
   def show
     @movie = Movie.find(params[:id])
-    cookies["last_movie"] = @movie.title
+    session["last_movie"] = @movie.title
 
     respond_to do |format|
       format.html # show.html.erb

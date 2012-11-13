@@ -2,8 +2,11 @@
 <% if flash[:notice] %>
       <p><%= flash[:notice] %></p>
     <% end %>
+<p>Enter your email address and password to log in.</p>
 <%= form_tag '/sessions/create' do %>
-<%= label_tag :email, 'Enter Your Email Address:' %><br>
+<%= label_tag :email %><br>
 <%= text_field_tag :email%><br>
+<%= label_tag :password %><br>
+<%= password_field_tag :password %><br>
 <%= submit_tag 'Login' %>
 <% end %>
