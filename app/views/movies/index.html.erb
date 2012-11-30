@@ -10,6 +10,12 @@
     <th></th>
   </tr>
 
+
+<%= link_to_previous_page @movies, 'Previous Page' %>
+<%= link_to_next_page @movies, 'Next Page' %>
+
+
+
 <% @movies.each do |movie| %>
   <tr>
     <td><%= movie.title %></td>

@@ -4,7 +4,9 @@ Imdb::Application.routes.draw do
   post 'sessions/create' => 'sessions#create'
   get '/logout' =>'sessions#destroy', :as => 'logout'
   
-
+  resources :movies do
+    get 'page/:page', :action => :index, :on => :collection
+  end
   
   resources :votes
 
